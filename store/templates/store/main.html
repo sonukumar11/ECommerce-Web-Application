@@ -29,7 +29,39 @@
     }
     return cookieValue;
 }
-const csrftoken = getCookie('csrftoken');
+let csrftoken = getCookie('csrftoken');
+
+
+// function to get the cookies stored in the browser for guest user cart
+function getCartCookie(name){
+	//split cookie string and get all individual name value pairs in an array
+	let cookieArr = document.cookie.split(";");
+
+
+	//Now Loop through the array elements
+	for(let i=0;i<cookieArr.length;i++){
+		let cookiePair = cookieArr[i].split("=");
+
+		//Removing the whitespace at the beginning and the end of the cookie name
+		//compare it with the given string
+		if(name == cookiePair[0].trim()){
+			//Decode the cookie value and return
+			return decodeURIComponent(cookiePair[1]);
+		}
+	}
+
+	//return null if nothing found
+	return null;
+}
+
+let cart = JSON.parse(getCartCookie('cart'))
+
+if(cart == undefined){
+	cart = {}
+	console.log('Cart was created');
+	document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+}
+console.log(`cart: ${cart}`)
 	</script>
 
 </head>
