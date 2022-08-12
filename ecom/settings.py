@@ -25,7 +25,7 @@ SECRET_KEY = 'ejovnk@_vps72fn&sj^d^84%ac-p9olf06u#y5um_6m_z)l8qq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lilinventory.herokuapp.com' , '127.0.0.1']
 
 
 # Application definition

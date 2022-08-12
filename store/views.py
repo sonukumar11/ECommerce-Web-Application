@@ -86,9 +86,8 @@ def processOrder(request):
 
     print(f"total : {total}")
     print(f"get Cart total:  {order.get_cart_total}")
-
-    if total == float(order.get_cart_total):
-        order.complete = True
+    
+    order.complete = True
     order.save()
 
     if order.shipping == True:
